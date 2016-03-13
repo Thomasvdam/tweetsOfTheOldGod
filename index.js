@@ -30,7 +30,7 @@ let params = {
 
 // Set up the twitter client.
 const client = new Twitter(auth);
-client.stream('statuses/filter', { follow: '708710148542472192'}, function (stream) {
+client.stream('statuses/filter', params, function (stream) {
     log.info('C\'Thun started whispering');
 
     stream.on('data', processData);
