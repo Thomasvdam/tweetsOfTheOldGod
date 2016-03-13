@@ -1,0 +1,46 @@
+{
+    "testing" : false,
+    "logging" : "debug",
+    "chance" : 2,
+    "usersToFollow" : [
+        { "name" : "PlayHearthstone", "id" : 1209608880 },
+        { "name" : "Blizzard", "id" : 331908924 },
+        { "name" : "Ben Brode", "id" : 1220791675 },
+        { "name" : "Amaz", "id" : 2369126940 },
+        { "name" : "Trump", "id" : 234905133 },
+        { "name" : "Frodan", "id" : 20818625 },
+        { "name" : "Forsen", "id" : 566662738 },
+        { "name" : "Amnesiac", "id" : 2835498826 },
+        { "name" : "Kripparrian", "id" : 579648949 },
+        { "name" : "Eloise", "id" : 3104735252 },
+        { "name" : "Firebat", "id" : 2447968201 },
+        { "name" : "Noxious", "id" : 1362525619 },
+        { "name" : "Kibler", "id" : 18995373 },
+        { "name" : "day9", "id" : 96848570 },
+        { "name" : "Hafu", "id" : 608418415 },
+        { "name" : "Strifecro", "id" : 370513358 },
+        { "name" : "Kolento", "id" : 291015650 },
+        { "name" : "Savjz", "id" : 1409082714 },
+        { "name" : "Lifecoach", "id" : 3065801661 },
+        { "name" : "Ostkaka", "id" : 2349120332 },
+        { "name" : "Orange", "id" : 496012442 },
+        { "name" : "Gnimsh", "id" : 1869322766 }
+    ],
+    "interestingUsers" : [
+        { "name" : "C'Thun", "id" : 708710148542472192 }
+    ],
+    "queries" : [
+        "oldgods",
+        "old gods"
+    ],
+    "messages" : [
+        "Death is close...",
+		"You are already dead...",
+		"Your courage will fail...",
+		"Your friends will abandon you...",
+		"You will betray your friends...",
+		"You will die...",
+		"You are weak...",
+        "Your heart will explode..."
+    ]
+}
