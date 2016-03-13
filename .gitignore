@@ -2,7 +2,11 @@
 node_modules/
 npm-debug.log*
 
+# Auth for the twitter API
 auth.json
-output.json
-whispers.json
+
+# Logging file
+whispers.log
+
+# Had to store this somewhere
 crontabCommand.txt
