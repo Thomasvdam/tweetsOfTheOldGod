@@ -47,7 +47,7 @@ function processData(tweet) {
 
     // Make sure it's a tweet from a followed user, not a retweet or something
     if (users.indexOf(tweet.user.id) === -1) {
-        log.debug('This mortal is not worthy of my time...')
+        log.debug('This mortal is not worthy of my time...');
         return;
     }
 
@@ -79,7 +79,7 @@ function processData(tweet) {
     let tweetId = tweet.id_str;
 
     // Drive them mad...
-    tweetWhisper(user, tweetId)
+    tweetWhisper(user, tweetId);
 }
 
 /**
@@ -91,7 +91,7 @@ function tweetWhisper(user, tweetId) {
     // Direct it to the lucky individual.
     let whisper = '@' + user + ': ';
     // Add a maddening whisper.
-    whisper += messages[Math.floor(Math.random() * messages.length)];;
+    whisper += messages[Math.floor(Math.random() * messages.length)];
     // Make sure we don't go over the 140 character limit.
     whisper.substr(0, 140);
 
