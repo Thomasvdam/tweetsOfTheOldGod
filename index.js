@@ -6,7 +6,6 @@ const bole = require('bole');
 
 const config = require('./config.json');
 const messages = config.messages;
-const chance = 1 / config.chance;
 
 // Set up logging
 const log = bole('cthun');
@@ -72,13 +71,6 @@ function processData(tweet) {
 
     if (!shouldWhisper) {
         log.debug('I should bide my time...');
-        return;
-    }
-
-    // We may be mad, but we don't want to spam.
-    let random = Math.random();
-    if (random > chance) {
-        log.debug('Maybe some other time...');
         return;
     }
 
