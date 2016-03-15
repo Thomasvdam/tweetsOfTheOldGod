@@ -8,7 +8,7 @@ const dbHelper = require('./database.js');
 
 const config = require('./config.json');
 const messages = config.messages;
-const users = config.usersToHaunt;
+let users = config.usersToHaunt;
 const chance = 1 / config.chance;
 
 // Set up logging
@@ -48,7 +48,8 @@ getFreshRandomUser(function (user) {
  */
 function getFreshRandomUser(callback) {
     // Randomly select one of the haunted users.
-    let user = users[Math.floor(Math.random() * users.length)];
+    let randomIndex = Math.floor(Math.random() * users.length);
+    let user = users[randomIndex];
 
     // Verify that this user has not been tweeted recently.
     dbHelper.findUser(user.id, function (userDoc) {
@@ -67,7 +68,11 @@ function getFreshRandomUser(callback) {
             callback(user);
         }
 
-        // Recursively find a new user, shouldn't exceed stack size due to +50% availability.
+        // Remove the selected user from the array. Since this script reruns
+        // every time we don't need to worry about putting it back
+        users.splice(randomIndex, 1);
+
+        // Recursively find a new user.
         getFreshRandomUser(callback);
     });
 }
