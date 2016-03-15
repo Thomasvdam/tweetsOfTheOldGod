@@ -20,10 +20,10 @@ bole.output({
 
 // We may be mad, but we don't want to spam.
 let random = Math.random();
-// if (random > chance) {
-//     log.info('Maybe some other time...');
-//     return;
-// }
+if (random > chance) {
+    log.debug('Maybe some other time...');
+    return;
+}
 
 // We should spread our madness, don't want arouse suspicion in our targets.
 getFreshRandomUser(function (user) {
