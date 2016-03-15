@@ -47,6 +47,12 @@ getFreshRandomUser(function (user) {
  * @param  {Function} callback What to do with the random user.
  */
 function getFreshRandomUser(callback) {
+    // Should there be no users left to whisper to don't do anything.
+    if (users.length === 0) {
+        log.info("I crave fresh souls...");
+        return;
+    }
+
     // Randomly select one of the haunted users.
     let randomIndex = Math.floor(Math.random() * users.length);
     let user = users[randomIndex];
