@@ -20,10 +20,10 @@ bole.output({
 
 // We may be mad, but we don't want to spam.
 let random = Math.random();
-if (random > chance) {
-    log.info('Maybe some other time...');
-    return;
-}
+// if (random > chance) {
+//     log.info('Maybe some other time...');
+//     return;
+// }
 
 // We should spread our madness, don't want arouse suspicion in our targets.
 getFreshRandomUser(function (user) {
@@ -69,10 +69,14 @@ function getFreshRandomUser(callback) {
         let now = new Date();
         let difference = Math.abs(now - userDoc.lastTweetDate) / 3.6e6
 
-        // It has been 12 hours, good to go.
+        // It has been a while, good to go.
         if (difference > config.hoursDelay) {
             callback(user);
+            return;
         }
+
+        // This user has recently been whispered to.
+        log.debug('My last whisper to ' + user.name + ' still lingers...');
 
         // Remove the selected user from the array. Since this script reruns
         // every time we don't need to worry about putting it back
