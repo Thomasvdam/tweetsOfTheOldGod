@@ -1,6 +1,6 @@
 {
   "name": "tweets-of-the-old-god",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Your heart will explode...",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "bole": "^2.0.0",
+    "mongodb": "^2.1.7",
     "prompt": "^1.0.0",
     "twitter": "^1.2.5"
   }

@@ -4,6 +4,8 @@ const Twitter = require('twitter');
 const auth = require('./auth.json');
 const bole = require('bole');
 
+const dbHelper = require('./database.js');
+
 const config = require('./config.json');
 const messages = config.messages;
 const users = config.usersToHaunt;
@@ -23,16 +25,52 @@ if (random > chance) {
     return;
 }
 
-// Randomly select one of the haunted users.
-let user = users[Math.floor(Math.random() * users.length)];
+// We should spread our madness, don't want arouse suspicion in our targets.
+getFreshRandomUser(function (user) {
+    // Set up the twitter client.
+    const client = new Twitter(auth);
 
-// Set up the twitter client.
-const client = new Twitter(auth);
+    // Get the twitter handle for the account id first.
+    client.get('users/show', { user_id : user.id }, function (err, user, response) {
+        tweetWhisper(user.screen_name);
 
-// Get the twitter handle for the account id first.
-client.get('users/show', { user_id : user.id }, function (err, user, response) {
-    tweetWhisper(user.screen_name);
+        // I do not forget...
+        dbHelper.upsertUser(user.id, function () {
+            log.debug('Hey you, I remember you...');
+        });
+    });
 });
+
+/**
+ * Get a random user that has not been tweeted in the previous timeframe and pass
+ * it to the callback.
+ * @param  {Function} callback What to do with the random user.
+ */
+function getFreshRandomUser(callback) {
+    // Randomly select one of the haunted users.
+    let user = users[Math.floor(Math.random() * users.length)];
+
+    // Verify that this user has not been tweeted recently.
+    dbHelper.findUser(user.id, function (userDoc) {
+        // No userdoc means the user has not yet been tweeted.
+        if (!userDoc) {
+            callback(user);
+            return;
+        }
+
+        // Calculate difference in hours and see if it is in range.
+        let now = new Date();
+        let difference = Math.abs(now - userDoc.lastTweetDate) / 3.6e6
+
+        // It has been 12 hours, good to go.
+        if (difference > config.hoursDelay) {
+            callback(user);
+        }
+
+        // Recursively find a new user, shouldn't exceed stack size due to +50% availability.
+        getFreshRandomUser(callback);
+    });
+}
 
 /**
  * Whisper a tweet to a user.

@@ -1,7 +1,8 @@
 {
-    "testing" : true,
+    "testing" : false,
     "logging" : "info",
     "chance" : 5,
+    "hoursDelay" : 24,
     "usersToFollow" : [
         { "name" : "PlayHearthstone", "id" : 1209608880 },
         { "name" : "Blizzard", "id" : 331908924 },
