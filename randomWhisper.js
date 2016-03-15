@@ -51,6 +51,12 @@ function tweetWhisper(userName) {
         status: whisper,
     }
 
+    // Commenting code out is cumbersome.
+    if (config.testing) {
+        log.info(data);
+        return;
+    }
+
     // Hey... Listen...
     client.post('statuses/update', data, function (err, tweet, response) {
         if (err) log.error(err);
