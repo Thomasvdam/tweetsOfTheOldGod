@@ -1,7 +1,7 @@
 {
     "testing" : false,
     "logging" : "info",
-    "chance" : 5,
+    "chance" : 4,
     "hoursDelay" : 24,
     "usersToFollow" : [
         { "name" : "PlayHearthstone", "id" : 1209608880 },

@@ -4,7 +4,7 @@
 
 ## Random Whisper
 
-Extra (bonus) script that will try to whisper a maddening thought to a random haunted user. Will actually tweet 1 every 5 times, but this is configurable. Currently lives inside a cronjob that fires every hour, which means it should average on 4.8 whispers a day.  
+Extra (bonus) script that will try to whisper a maddening thought to a random haunted user. Will actually tweet 1 every 4 times, but this is configurable. Currently lives inside a cronjob that fires every hour, which means it should average on 6 whispers a day.  
 
 This script also links up with a database as to not whisper the same user within a configurable timespan currently set at 24 hours. This should allow me to increase the frequency of messages without the risk of spamming users.
 
