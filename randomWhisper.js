@@ -25,10 +25,11 @@ if (random > chance) {
     return;
 }
 
+// Set up the twitter client.
+const client = new Twitter(auth);
+
 // We should spread our madness, don't want arouse suspicion in our targets.
 getFreshRandomUser(function (user) {
-    // Set up the twitter client.
-    const client = new Twitter(auth);
 
     // Get the twitter handle for the account id first.
     client.get('users/show', { user_id : user.id }, function (err, user, response) {
