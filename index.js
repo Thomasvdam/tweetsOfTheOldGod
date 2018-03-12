@@ -39,7 +39,7 @@ client.stream('statuses/filter', params, function (stream) {
 /**
  * Extract relevant info from a tweet and determine whether to whisper a
  * maddening thought.
- * @param  {object} tweet Object passed by the Twitter.stream.
+ * @param  {Object} tweet Object passed by the Twitter.stream.
  */
 function processData(tweet) {
     // Check whether there is a user at all.
@@ -84,8 +84,8 @@ function processData(tweet) {
 
 /**
  * Whisper a random maddening thought to a user.
- * @param  {string} user    Twitter screen name of the user to reply to.
- * @param  {string} tweetId ID of the tweet to reply to.
+ * @param  {String} user    Twitter screen name of the user to reply to.
+ * @param  {String} tweetId ID of the tweet to reply to.
  */
 function tweetWhisper(user, tweetId) {
     // Direct it to the lucky individual.
